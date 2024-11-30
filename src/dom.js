@@ -11,14 +11,14 @@ const viewProjects = () => {
         let projectDiv = document.createElement('div');
         projectDiv.classList.add('projectItem');
 
-        // Delete button
+        // Corner delete button
         const deleteBtn = document.createElement('button');
         deleteBtn.classList.add('deleteButton');
         deleteBtn.innerHTML = 'X';
         deleteBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
+            e.stopPropagation(); // stops other click event listener
             ProjectList.instance.deleteProject(project.id);
-            transitionPageTo('projectList');
+            transitionPageTo('projectList'); // refreshes page
         });
         projectDiv.appendChild(deleteBtn);
 
@@ -52,7 +52,7 @@ const viewProjects = () => {
     });
 
     document.getElementById('createProjectForm').addEventListener('submit', (e) => {
-        e.preventDefault();
+        e.preventDefault(); // stops it from sending it to server.
         const newProjectName = document.getElementById('newProjectName').value.trim();
         if (newProjectName) {
             ProjectList.instance.addProject(newProjectName);

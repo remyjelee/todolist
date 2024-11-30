@@ -41,14 +41,6 @@ export class Todo {
         if (priority) this.priority = priority;
     }
 
-    markAsComplete() {
-        this.completed = true;
-    }
-
-    markAsIncomplete() {
-        this.completed = false;
-    }
-
     isOverdue() {
         const today = new Date();
         return !this.completed && this.dueDate < today;
@@ -96,7 +88,7 @@ export class ProjectList {
 
     addProject(name) {
         if (this.projects.some(project => project.name === name)) {
-            console.log(`Project "${name}" already exists.`);
+            alert(`Project "${name}" already exists.`);
             return;
         }
 
